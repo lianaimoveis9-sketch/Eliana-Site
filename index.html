@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eliana Imóveis | Empreendimentos Mundo Apto</title>
+  <meta name="description" content="Eliana Imóveis - corretora de imóveis. Conheça os empreendimentos Mundo Apto em São Paulo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --laranja: #F07800;
+      --laranja-escuro: #CC6600;
+      --laranja-claro: #FFF3E6;
+      --texto: #2B2B2B;
+      --texto-suave: #5E5E5E;
+      --borda: #F0E2D2;
+      --branco: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--texto);
+      background-color: var(--branco);
+      background-image: linear-gradient(180deg, var(--laranja-claro) 0px, var(--branco) 340px);
+      background-repeat: no-repeat;
+      line-height: 1.55;
+    }
+
+    /* ---------- Topo ---------- */
+    .topo {
+      display: flex;
+      align-items: center;
+      padding: 10px 32px;
+      border-bottom: 1px solid var(--borda);
+      background: var(--branco);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .topo a { display: inline-flex; }
+    .logo { height: 40px; width: auto; display: block; }
+
+    /* ---------- Apresentação ---------- */
+    .hero {
+      text-align: center;
+      padding: 20px 20px 16px;
+      background: transparent;
+    }
+    .hero h1 {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--laranja);
+      margin-bottom: 12px;
+    }
+    .foto {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      object-position: center 20%;
+      border-radius: 50%;
+      border: 5px solid var(--branco);
+      box-shadow: 0 0 0 4px var(--laranja), 0 10px 30px rgba(240, 120, 0, .25);
+    }
+    .hero p {
+      margin-top: 12px;
+      color: var(--texto-suave);
+      font-size: .95rem;
+    }
+
+    /* ---------- Barras de contato ---------- */
+    .contatos {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+      width: 100%;
+      max-width: 440px;
+      margin: 14px auto 0;
+    }
+    .barra {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .95rem;
+      text-decoration: none;
+      color: var(--laranja);
+      background: var(--branco);
+      border: 2px solid var(--laranja);
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .barra:hover, .barra:focus-visible {
+      background: var(--laranja);
+      color: var(--branco);
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    /* ---------- Pontos caindo no fundo ---------- */
+    #pontos {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero, .empreendimentos, .rodape { position: relative; z-index: 1; }
+
+    /* ---------- Empreendimentos ---------- */
+    .empreendimentos {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px 72px;
+    }
+    .empreendimentos > h2 {
+      text-align: center;
+      font-size: 1.25rem;
+      margin-bottom: 18px;
+    }
+    .empreendimentos > h2::after {
+      content: "";
+      display: block;
+      width: 56px;
+      height: 4px;
+      background: var(--laranja);
+      border-radius: 2px;
+      margin: 12px auto 0;
+    }
+
+    .grade {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .card {
+      display: flex;
+      align-items: stretch;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px;
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card:hover, .card:focus-visible {
+      transform: translateY(-4px);
+      border-color: var(--laranja);
+      box-shadow: 0 12px 28px rgba(240, 120, 0, .18);
+      outline: none;
+    }
+
+    .card-texto { display: flex; flex-direction: column; flex: 1; }
+    .card-texto h3 {
+      font-size: 1.15rem;
+      color: var(--laranja);
+      margin-bottom: 8px;
+    }
+    .card-texto p {
+      font-size: .95rem;
+      color: var(--texto-suave);
+      margin-bottom: 16px;
+    }
+    .botao {
+      margin-top: auto;
+      align-self: flex-start;
+      background: var(--laranja);
+      color: var(--branco);
+      font-weight: 600;
+      font-size: .9rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: background .2s ease;
+    }
+    .card:hover .botao { background: var(--laranja-escuro); }
+
+    .card img {
+      width: 130px;
+      min-height: 170px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    /* último card sozinho na linha fica centralizado */
+    .card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      justify-self: center;
+      width: calc(50% - 14px);
+    }
+
+    /* ---------- Rodapé ---------- */
+    .rodape {
+      text-align: center;
+      padding: 28px 20px;
+      background: var(--laranja);
+      color: var(--branco);
+      font-size: .95rem;
+    }
+    .rodape a { color: var(--branco); font-weight: 600; }
+
+    /* ---------- Celular ---------- */
+    @media (max-width: 760px) {
+      .topo { padding: 8px 20px; }
+      .logo { height: 34px; }
+      .grade { grid-template-columns: 1fr; }
+      .card:last-child:nth-child(odd) { width: 100%; }
+      .card img { width: 110px; }
+      .foto { width: 100px; height: 100px; }
+      .barra { padding: 9px 12px; font-size: .9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="pontos" aria-hidden="true"></canvas>
+
+  <header class="topo">
+    <!-- Clique no logo abre o site da Mundo Apto em uma nova aba -->
+    <a href="https://mundoapto.com.br/imoveis/" target="_blank" rel="noopener" aria-label="Abrir site da Mundo Apto">
+      <img class="logo" src="imagens/logo-mundo-apto.png" alt="Mundo Apto">
+    </a>
+  </header>
+
+  <section class="hero">
+    <h1>Eliana Imóveis</h1>
+    <img class="foto" src="imagens/eliana.jpeg" alt="Eliana, corretora de imóveis">
+    <p>Conheça os empreendimentos Mundo Apto em São Paulo</p>
+
+    <div class="contatos">
+      <a class="barra barra-instagram" href="https://www.instagram.com/liana_imoveis/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+          <circle cx="12" cy="12" r="4"></circle>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+        </svg>
+        Instagram
+      </a>
+      <a class="barra barra-whatsapp" href="https://wa.link/6ssbty" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+          <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.29z"></path>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <main class="empreendimentos">
+    <h2>Empreendimentos</h2>
+
+    <div class="grade">
+
+      <a class="card" href="https://mundoapto.com.br/mundo-apto-brooklin/" target="_blank" rel="noopener">
+        <div class="card-texto">
+          <h3>Estação Brooklin</h3>
+          <p>Chegou a hora de viver perto de tudo o que você precisa, em um dos bairros mais desenvolvidos, desejados e valorizados de São Paulo. São apartamentos com 01 ou 02 dormitórios e varanda, a 3 min da estação Brooklin do metrô e lazer completo.</p>
+          <span class="botao">Ver empreendimento</span>
+        </div>
+        <img src="imagens/brooklin.jpg" alt="Fachada do Estação Brooklin" loading="lazy">
+      </a>
+
+      <a class="card" href="https://mundoapto.com.br/mundo-apto-elevato-brooklin/" target="_blank" rel="noopener">
+        <div class="card-texto">
+          <h3>Elevato Brooklin</h3>
+          <p>More no coração de Santo Amaro, em um projeto que oferece um equilíbrio perfeito entre infraestrutura, qualidade de vida e conveniência. São apartamentos Studio ou com 01 dormitório, varanda e lazer completo.</p>
+          <span class="botao">Ver empreendimento</span>
+        </div>
+        <img src="imagens/elevato-brooklin.jpg" alt="Fachada do Elevato Brooklin" loading="lazy">
+      </a>
+
+      <a class="card" href="https://mundoapto.com.br/mundo-apto-estacao-sp-morumbi/" target="_blank" rel="noopener">
+        <div class="card-texto">
+          <h3>SP-Morumbi</h3>
+          <p>Viva em uma das regiões mais desejadas de São Paulo. Com ótima localização, fácil acesso a toda a cidade e muitas opções de lazer e conveniência, é o lugar certo para quem busca praticidade, conforto e qualidade de vida. São apartamentos studios, 01 ou 02 dormitórios, varanda e lazer completo.</p>
+          <span class="botao">Ver empreendimento</span>
+        </div>
+        <img src="imagens/morumbi.jpg" alt="Fachada do SP-Morumbi" loading="lazy">
+      </a>
+
+      <a class="card" href="https://mundoapto.com.br/mundo-apto-estacao-borba-gato/" target="_blank" rel="noopener">
+        <div class="card-texto">
+          <h3>Borba Gato</h3>
+          <p>Viva com mais mobilidade ao lado do Metrô Borba Gato. Um endereço pensado para quem valoriza praticidade e qualidade de vida. São apartamentos com 01 ou 02 dormitórios, varanda e lazer completo.</p>
+          <span class="botao">Ver empreendimento</span>
+        </div>
+        <img src="imagens/borba-gato.jpg" alt="Fachada do Borba Gato" loading="lazy">
+      </a>
+
+      <a class="card" href="https://mundoapto.com.br/mundo-apto-estacao-lapa/" target="_blank" rel="noopener">
+        <div class="card-texto">
+          <h3>Lapa</h3>
+          <p>More em um bairro conectado, com infraestrutura e uma atmosfera tradicional de São Paulo. Coberto por uma extensa linha de transportes, facilitando o deslocamento para outras regiões da cidade, além de comércios, serviços e opções de lazer, como parques e centros culturais. São apartamentos com 01 ou 02 dormitórios e varanda, a 2 min a pé do trem e lazer completo.</p>
+          <span class="botao">Ver empreendimento</span>
+        </div>
+        <img src="imagens/lapa.jpg" alt="Fachada do empreendimento na Lapa" loading="lazy">
+      </a>
+
+      <a class="card" href="https://mundoapto.com.br/mundo-apto-essencia-ipiranga/" target="_blank" rel="noopener">
+        <div class="card-texto">
+          <h3>Essência Ipiranga</h3>
+          <p>No Ipiranga a cidade flui melhor: fácil de ir, fácil de voltar, fácil de viver. São apartamentos com 01 ou 02 dormitórios, varanda e lazer completo.</p>
+          <span class="botao">Ver empreendimento</span>
+        </div>
+        <img src="imagens/essencia-ipiranga.jpg" alt="Fachada do Essência Ipiranga" loading="lazy">
+      </a>
+
+      <a class="card" href="https://mundoapto.com.br/mundo-apto-alto-da-mooca/" target="_blank" rel="noopener">
+        <div class="card-texto">
+          <h3>Alto da Mooca</h3>
+          <p>Um bairro que equilibra ruas calmas, boa infraestrutura e qualidade de vida. São apartamentos com 01 ou 02 dormitórios, varanda e lazer completo.</p>
+          <span class="botao">Ver empreendimento</span>
+        </div>
+        <img src="imagens/alto-mooca.jpg" alt="Fachada do Alto da Mooca" loading="lazy">
+      </a>
+
+    </div>
+  </main>
+
+  <footer class="rodape">
+    Eliana Imóveis &middot; Empreendimentos
+    <a href="https://mundoapto.com.br/imoveis/" target="_blank" rel="noopener">Mundo Apto</a>
+  </footer>
+
+<script>
+    // Pontos laranja caindo suavemente no fundo da página
+    (function () {
+      var canvas = document.getElementById('pontos');
+      if (!canvas || !canvas.getContext) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var ctx = canvas.getContext('2d');
+      var w = 0, h = 0, dpr = 1, pontos = [];
+
+      function novoPonto(sortearAltura) {
+        return {
+          x: Math.random() * w,
+          y: sortearAltura ? Math.random() * h : -10,
+          r: 2 + Math.random() * 5,          // tamanho
+          v: 0.3 + Math.random() * 0.8,      // velocidade de queda
+          fase: Math.random() * Math.PI * 2, // balanço lateral
+          velFase: 0.005 + Math.random() * 0.01,
+          amp: 0.2 + Math.random() * 0.4,
+          a: 0.15 + Math.random() * 0.3      // transparência
+        };
+      }
+
+      function ajustar() {
+        dpr = window.devicePixelRatio || 1;
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var qtd = Math.round(Math.min(70, Math.max(25, (w * h) / 20000)));
+        while (pontos.length < qtd) pontos.push(novoPonto(true));
+        pontos.length = qtd;
+      }
+
+      function animar() {
+        ctx.clearRect(0, 0, w, h);
+        for (var i = 0; i < pontos.length; i++) {
+          var p = pontos[i];
+          p.y += p.v;
+          p.fase += p.velFase;
+          p.x += Math.sin(p.fase) * p.amp;
+          if (p.y > h + 10) {
+            p.y = -10;
+            p.x = Math.random() * w;
+          }
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(240, 120, 0, ' + p.a + ')';
+          ctx.fill();
+        }
+        requestAnimationFrame(animar);
+      }
+
+      ajustar();
+      window.addEventListener('resize', ajustar);
+      requestAnimationFrame(animar);
+    })();
+  </script>
+
+</body>
+</html>
